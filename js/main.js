@@ -1,3 +1,24 @@
+/****NAVIGATION BAR CLICK FUNCTION(on Mobile)***************/
+/* When the user clicks on the button,
+toggle between hiding and showing the dropdown content */
+function myFunction() {
+    document.getElementById("meshow").classList.toggle("showing");
+}
+// Close the dropdown if the user clicks outside of it
+window.onclick = function(event){
+    if (!event.target.matches(".handle")){
+        var dropdowns = document.getElementsByClassName("dropdown-content");
+        var i;
+        for (i = 0;i < dropdowns.length; i++){
+            var openDropdown = dropdowns[i];
+            if (openDropdown.classList.contains('showing')){
+                openDropdown.classList.remove('showing');
+            }
+        }
+    }
+}
+
+/*****BACK TO TOP FUNCTION*********/
 jQuery(document).ready(function($){
 	// browser window scroll (in pixels) after which the "back to top" link is shown
 	var offset = 300,
@@ -24,5 +45,24 @@ jQuery(document).ready(function($){
 		 	}, scroll_top_duration
 		);
 	});
+
+});
+
+
+/******Nav Scroll-on-click******/
+$(document).ready(function () {
+    $(window).scroll(function () {
+        $('.hideme').each(function (i) {
+            var bottom_of_object = $(this).offset().top + $(this).outerHeight();
+            var bottom_of_window = $(window).scrollTop() + $(window).height();
+            if (bottom_of_window > bottom_of_object) {
+                $(this).animate({
+                    'opacity': '1'
+                }, 600);
+            }
+
+        });
+
+    });
 
 });
